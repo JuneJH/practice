@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Provider } from './contextForm';
 import Input from "./Input"
+import Button from './Button';
 export default class Form extends Component {
     state = {
         formData: {
@@ -28,3 +29,4 @@ export default class Form extends Component {
 }
 
 Form.Input = Input;
+Form.Button = Button;
