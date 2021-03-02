@@ -16,15 +16,3 @@ export  const config = [
     },
     { path: "/",  component: Home },
 ]
-
-// export const config = [
-//     {
-//         path: "/news", component: News, name: "news",
-//         children: [
-//             { path: "/", name: "newsHome", exact: true, component: NewsHome },
-//             { path: "/news1", name: "newsDetail", exact: true, component: New1 },
-//             { path: "/news2", name: "newsSearch", exact: true, component: New2 }
-//         ]
-//     },
-//     { path: "/", name: "home", component: Home },
-// ]
