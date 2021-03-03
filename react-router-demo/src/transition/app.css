@@ -1,0 +1,22 @@
+#root{
+    margin: 10px auto;
+    width: 700px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container{
+    width: 100%;
+    height: 500px;
+    background-color: #008c8c;
+    position:absolute;
+    left:0;
+    right:0;
+}
