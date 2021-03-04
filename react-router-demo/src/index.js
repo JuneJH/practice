@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './transition/App';
+import App from './scroll/App';
 
 
 ReactDOM.render(
