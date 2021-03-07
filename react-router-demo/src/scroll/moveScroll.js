@@ -1,20 +1,29 @@
+let timer1,timer2;
 export default function moveScroll(start,end){
-    move(start,end);
+    clearInterval(timer1);
+    clearInterval(timer2);
+    const html = document.documentElement;
+    timer1 = move(html.scrollTop,0,(val)=>{
+        html.scrollTop = val;
+    })
+    timer2 = move(html.scrollLeft,0,(val)=>{
+        html.scrollLeft  = val
+    })
 }
-let timer = null;
-function move(start,end){
-    clearInterval(timer);
-    const continued = 1000;
-    let dis = start - end;
-    const speed = Math.ceil(dis/continued);
-    let s = 0;
-   timer = setInterval(()=>{
-        dis -= speed;
-        window.scroll(0,dis);
-        if(dis < 0){
-            window.scroll(0,0);
+function move(start,end,callback){
+    const tick = 16;
+    const total = 1000;
+    const timers = Math.ceil(total / tick);
+    let curTimers = 0;
+    const dis = (end - start) / timers;
+    const timer = setInterval(()=>{
+        curTimers ++;
+        start += dis;
+        if(curTimers === timers){
+            start = end;
             clearInterval(timer)
         }
-
-    },1000/60)
+        callback(start)
+    },tick)
+    return timer;
 }

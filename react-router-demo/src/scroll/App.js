@@ -8,10 +8,10 @@ import moveScroll from './moveScroll';
 export default function App() {
     return (
         <Guard beforeRouter={(msg,callback,preLocation,location,isCancel,action)=>{
-            if(preLocation.pathname == location.pathname){
+            if(preLocation.pathname === location.pathname){
                 callback(true)
             }else{
-                moveScroll(document.documentElement.scrollTop,0);
+                moveScroll();
                 callback(true);
             }
         }}>
