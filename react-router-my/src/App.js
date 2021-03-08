@@ -1,6 +1,7 @@
 import React from 'react';
 // import "./router/matchRouter";
 import {BrowserRouter,Route,Link} from 'react-router-dom'
+import "./myHistory/index"
 
 function Page(props){
   console.log("进入")
