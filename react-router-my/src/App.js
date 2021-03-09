@@ -1,6 +1,7 @@
 import React from 'react';
 // import "./router/matchRouter";
-import {BrowserRouter,Route,Link} from 'react-router-dom'
+// import {BrowserRouter,Route,Link} from 'react-router-dom';
+import {BrowserRouter} from './react-router-dom'
 import "./myHistory/index"
 
 function Page(props){
@@ -12,13 +13,10 @@ function Page(props){
 }
 export default function App() {
   return (
-    <div>
-      THIS
-    </div>
-    // <BrowserRouter>
-    //    <Link to="/page/123">page</Link>
-    //    <Route path="/page/:id" component={Page}/>
-    // </BrowserRouter>
+    <BrowserRouter>
+       {/* <Link to="/page/123">page</Link> */}
+       {/* <Route path="/page/:id" component={Page}/> */}
+    </BrowserRouter>
   )
 }
 
