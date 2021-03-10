@@ -1,21 +1,38 @@
 import React from 'react';
 // import "./router/matchRouter";
 // import {BrowserRouter,Route,Link} from 'react-router-dom';
-import {BrowserRouter} from './react-router-dom'
+import { BrowserRouter, Route, Switch ,withRouter} from './react-router-dom'
 import "./myHistory/index"
-
-function Page(props){
-  console.log("进入");
-  console.log(props);
+function A(props){
+  return <div>
+    获取路由上下文: {props.location.pathname}
+  </div>
+}
+const WrapperA = withRouter(A)
+function Page(props) {
   return <div>
     THIS IS PAGE!
+    <WrapperA/>
+  </div>
+}
+function Page1(props) {
+  return <h1>this is page1</h1>
+}
+function Nav(props) {
+  return <div>
+    <button onClick={() => { props.history.push("/page") }}>page</button>
+    <button onClick={() => { props.history.push("/page1") }}>page1</button>
   </div>
 }
 export default function App() {
   return (
     <BrowserRouter>
-       {/* <Link to="/page/123">page</Link> */}
-       {/* <Route path="/page/:id" component={Page}/> */}
+      <Switch>
+        {/* <Link to="/page/123">page</Link> */}
+        <Route path="/page" component={Page}></Route>
+        <Route path="/page1" component={Page1} />
+        <Route path="/" component={Nav} />
+      </Switch>
     </BrowserRouter>
   )
 }
