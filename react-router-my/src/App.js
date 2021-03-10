@@ -1,7 +1,7 @@
 import React from 'react';
 // import "./router/matchRouter";
 // import {BrowserRouter,Route,Link} from 'react-router-dom';
-import { BrowserRouter, Route, Switch ,withRouter} from './react-router-dom'
+import { BrowserRouter, Route, Switch ,withRouter,Link} from './react-router-dom'
 import "./myHistory/index"
 function A(props){
   return <div>
@@ -27,8 +27,8 @@ function Nav(props) {
 export default function App() {
   return (
     <BrowserRouter>
+      <Link to="/page/123">page</Link>
       <Switch>
-        {/* <Link to="/page/123">page</Link> */}
         <Route path="/page" component={Page}></Route>
         <Route path="/page1" component={Page1} />
         <Route path="/" component={Nav} />
