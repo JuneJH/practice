@@ -7,11 +7,10 @@ export function matchPath(path,url,option){
         return null;
     }
     const params = getParams(key,result.slice(1));
-    console.log(result);
     return {
         params,
         path,
-        isExact:path === result[0],
+        isExact:url === result[0],
         url:result[0]
     }
 
@@ -37,6 +36,3 @@ function getOption(option={}){
     }
     return {...opt,end:opt.exact};
 }
-
-const result = matchPath("/news/:id","/News/123")
-console.log(result);
