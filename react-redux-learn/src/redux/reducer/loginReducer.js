@@ -4,6 +4,7 @@ const initialState = {
 }
 
 export default (state = initialState, { type, payload }) => {
+    console.log(type)
     switch (type) {
 
         case loginAction.SETLOGINUSER:

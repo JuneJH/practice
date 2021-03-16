@@ -1,8 +1,9 @@
-import { createStore,bindActionCreators } from 'redux';
+import {bindActionCreators } from 'redux';
 import { INCREASE, DECREASE, SET } from './action/type';
 import * as loginAction from './action/loginAction'
 import * as userAction from './action/userAction'
 import reducer from './reducer'
+import {createStore} from '../myRedux'
 
 
 // function reducer(state, action) {
@@ -15,7 +16,6 @@ import reducer from './reducer'
 //     }
 //     return state;
 // }
-
 const store = createStore(reducer);
 
 console.log(store)
@@ -27,7 +27,7 @@ store.subscribe(()=>{
 // 绑定action和store
 const boundAction = bindActionCreators({...loginAction,...userAction},store.dispatch);
 
-boundAction.createLoginAction({loginUser:"june"})
+store.dispatch(loginAction.createLoginAction({loginUser:"june"}))
 boundAction.createAddUserAction({id:3,name:"add",age:12})
 boundAction.createDeleteUserAction(1);
 boundAction.createUpdateUserAction(2,{name:"update",age:11})
