@@ -16,7 +16,7 @@ import reducer from './reducer'
 //     return state;
 // }
 
-const store = createStore(reducer, 1);
+const store = createStore(reducer);
 
 console.log(store)
 
