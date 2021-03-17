@@ -1,9 +1,9 @@
-import {bindActionCreators } from 'redux';
+import {createStore,bindActionCreators,applyMiddleware } from 'redux';
 import { INCREASE, DECREASE, SET } from './action/type';
 import * as loginAction from './action/loginAction'
 import * as userAction from './action/userAction'
 import reducer from './reducer'
-import {createStore} from '../myRedux'
+// import {createStore,bindActionCreators} from '../myRedux'
 
 
 // function reducer(state, action) {
@@ -16,9 +16,51 @@ import {createStore} from '../myRedux'
 //     }
 //     return state;
 // }
-const store = createStore(reducer);
 
-console.log(store)
+// const store = createStore(reducer,applyMiddleware(logger1,logger2));
+const logger3 = store=>next=>action=>{console.log("中间件3");next(action);}
+
+const store = applyMiddleware(logger1,logger2,logger3)(createStore)(reducer);
+console.log(store);
+
+// 原理
+// let oldDispatch = store.dispatch;
+
+// store.dispatch = function (action){
+//     console.log("中间件111")
+//     console.log(store.getState())
+//     oldDispatch(action);
+// }
+// let oldDispatch1 = store.dispatch;
+// store.dispatch = function (action){
+//     console.log("中间件22")
+//     console.log(store.getState())
+//     oldDispatch1(action);
+// }
+
+/**
+ * 
+ * @param {部分store的值} store 
+ */
+function logger1(store){
+    return function(next){
+        return function (action){
+            console.log("中间件1")
+            next(action)
+        }
+    }
+}
+
+function logger2(store){
+    return function(next){
+        return function (action){
+            console.log("中间件2")
+            next(action)
+        }
+    }
+}
+
+
 
 store.subscribe(()=>{
     console.log(store.getState())
