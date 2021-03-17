@@ -3,7 +3,6 @@ const initialState = [
     { id: 1, name: "张三", age: 11 },
     { id: 2, name: "李四", age: 12 },
 ]
-
 export default (state = initialState, { type, payload }) => {
     switch (type) {
         case userAction.ADDUSER:
