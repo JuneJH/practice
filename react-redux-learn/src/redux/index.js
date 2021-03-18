@@ -4,7 +4,7 @@ import * as loginAction from './action/loginAction'
 import * as userAction from './action/userAction'
 import reducer from './reducer'
 import {logger} from 'redux-logger'
-import thunk from 'redux-thunk'
+import thunk from '../redux-thunk'
 // import {createStore,bindActionCreators} from '../myRedux'
 
 
