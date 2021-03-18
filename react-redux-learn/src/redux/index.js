@@ -3,6 +3,8 @@ import { INCREASE, DECREASE, SET } from './action/type';
 import * as loginAction from './action/loginAction'
 import * as userAction from './action/userAction'
 import reducer from './reducer'
+import {logger} from 'redux-logger'
+import thunk from 'redux-thunk'
 // import {createStore,bindActionCreators} from '../myRedux'
 
 
@@ -19,8 +21,8 @@ import reducer from './reducer'
 
 // const store = createStore(reducer,applyMiddleware(logger1,logger2));
 const logger3 = store=>next=>action=>{console.log("中间件3");next(action);}
-
-const store = applyMiddleware(logger1,logger2,logger3)(createStore)(reducer);
+const t = thunk.withExtraArgument("附加信息")
+const store = applyMiddleware(t,logger)(createStore)(reducer);
 console.log(store);
 
 // 原理
@@ -61,18 +63,13 @@ function logger2(store){
 }
 
 
-
-store.subscribe(()=>{
-    console.log(store.getState())
-})
-
 // 绑定action和store
 const boundAction = bindActionCreators({...loginAction,...userAction},store.dispatch);
-
-store.dispatch(loginAction.createLoginAction({loginUser:"june"}))
-boundAction.createAddUserAction({id:3,name:"add",age:12})
-boundAction.createDeleteUserAction(1);
-boundAction.createUpdateUserAction(2,{name:"update",age:11})
+boundAction.effect();
+// store.dispatch(loginAction.createLoginAction({loginUser:"june"}))
+// boundAction.createAddUserAction({id:3,name:"add",age:12})
+// boundAction.createDeleteUserAction(1);
+// boundAction.createUpdateUserAction(2,{name:"update",age:11})
 
 
 // console.log("初始",store.getState());
