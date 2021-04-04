@@ -1,7 +1,7 @@
 import loginReducer from './loginReducer';
 import userReducer from './usersReducer';
-// import {combineReducers} from 'redux';
-import {combineReducers} from '../../myRedux'
+import {combineReducers} from 'redux';
+// import {combineReducers} from '../../myRedux'
 
 // export default function (state={},action){
 //     return {

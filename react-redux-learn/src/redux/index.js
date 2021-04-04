@@ -1,4 +1,5 @@
-import {createStore,bindActionCreators,applyMiddleware } from 'redux';
+import {createStore,bindActionCreators } from 'redux';
+import {applyMiddleware} from "../myRedux"
 import { INCREASE, DECREASE, SET } from './action/type';
 import * as loginAction from './action/loginAction'
 import * as userAction from './action/userAction'
