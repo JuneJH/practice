@@ -1,5 +1,6 @@
 import loginReducer from './loginReducer';
 import userReducer from './usersReducer';
+import counterReducer from './counter'
 import {combineReducers} from 'redux';
 // import {combineReducers} from '../../myRedux'
 
@@ -10,4 +11,5 @@ import {combineReducers} from 'redux';
 //     }
 // }
 
-export default combineReducers({loginReducer,userReducer})
+// export default combineReducers({loginReducer,userReducer,counterReducer})
+export default combineReducers({counterReducer})

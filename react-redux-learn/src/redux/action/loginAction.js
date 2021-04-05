@@ -7,12 +7,12 @@ export const createLoginAction = (payload) => ({
 })
 
 export const effect = () => (
-      function (dispatch,a,b) {
-          console.log("thunk的参数",a,b)
+    function (dispatch, a, b) {
+        console.log("thunk的参数", a, b)
         dispatch(createLoginAction("马上设置"));
         setTimeout(() => {
             dispatch(createLoginAction("延后设置"))
         }, 3000);
     }
-    )
+)
 

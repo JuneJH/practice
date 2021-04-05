@@ -1,7 +1,4 @@
 import {createStore} from 'redux';
-
-
-
 const action = {
     type:"IN"
 }
