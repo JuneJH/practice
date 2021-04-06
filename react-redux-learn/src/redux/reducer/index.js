@@ -1,5 +1,4 @@
-import loginReducer from './loginReducer';
-import userReducer from './usersReducer';
+
 import counterReducer from './counter'
 import {combineReducers} from 'redux';
 // import {combineReducers} from '../../myRedux'
