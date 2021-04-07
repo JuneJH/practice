@@ -1,4 +1,4 @@
-import { DECREASE, INCREASE } from "../action/type";
+import { DECREASE, INCREASE,SET } from "../action/type";
 
 const initState = {
     n: 0
@@ -15,6 +15,11 @@ export default function (state = initState, { type, payload }) {
             return {
                 ...state,
                 n: state.n - 1
+            }
+        case SET:
+            return {
+                ...state,
+                n:payload
             }
 
         default:
