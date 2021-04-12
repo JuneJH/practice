@@ -10,3 +10,6 @@ sagaMiddleware.run(saga)
 // 绑定action和store
 const boundAction = bindActionCreators({...counterAction},store.dispatch);
 window.b = boundAction;
+
+
+export default store;

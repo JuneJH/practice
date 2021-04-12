@@ -1,4 +1,4 @@
-import {INCREASE,DECREASE,SET} from './type';
+import {INCREASE,DECREASE,SET,ASYNCDECREASE,ASYNCINCREASE} from './type';
 
 export function getIncreaseAction() {
     return {
@@ -9,6 +9,16 @@ export function getIncreaseAction() {
 export function getDecreaseAction() {
     return {
         type: DECREASE
+    }
+}
+export function getAsyncDecreaseAction() {
+    return {
+        type: ASYNCDECREASE
+    }
+}
+export function getAsyncIncreaseAction() {
+    return {
+        type: ASYNCINCREASE
     }
 }
 
