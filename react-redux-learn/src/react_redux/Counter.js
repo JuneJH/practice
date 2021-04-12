@@ -1,7 +1,7 @@
 import React from 'react';
 import store from '../redux'
 import { getIncreaseAction,getDecreaseAction,getAsyncIncreaseAction, getAsyncDecreaseAction } from '../redux/action/counter';
-
+import {connect} from 'react-redux'
  function Counter(props) {
     return (
         <div>
@@ -36,23 +36,23 @@ function mapDispatch(dispatch){
         }
     }
 }
-export default class CounterContainer extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = mapStateToProps(store.getState());
+// export default class CounterContainer extends React.Component{
+//     constructor(props){
+//         super(props);
+//         this.state = mapStateToProps(store.getState());
       
-    }
-    componentDidMount(){
-        store.subscribe(()=>{
-            this.setState(mapStateToProps(store.getState()))
-        })
-    }
-    render(){
-        const eventDispatch = mapDispatch(store.dispatch)
-        return <Counter {...this.state} {...eventDispatch} />
-    }
+//     }
+//     componentDidMount(){
+//         store.subscribe(()=>{
+//             this.setState(mapStateToProps(store.getState()))
+//         })
+//     }
+//     render(){
+//         const eventDispatch = mapDispatch(store.dispatch)
+//         return <Counter {...this.state} {...eventDispatch} />
+//     }
+// }
 
-    
-}
+export default connect(mapStateToProps,mapDispatch)(Counter)
 
 
