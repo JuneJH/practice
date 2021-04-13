@@ -8,7 +8,7 @@ import createAction from './student'
 
 const sagaMiddleware = createSagaMiddleware();
 // const store = createStore(reducer,applyMiddleware(sagaMiddleware,logger))
-const store = applyMiddleware(sagaMiddleware,logger)(createStore)(reducer);
+const store = applyMiddleware(sagaMiddleware)(createStore)(reducer);
 
 bindActionCreators(createAction,store.dispatch);
 

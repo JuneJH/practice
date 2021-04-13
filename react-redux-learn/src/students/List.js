@@ -1,6 +1,7 @@
 import React,{useEffect} from 'react'
 
 export default function List(props) {
+    console.log("重新渲染")
     const dom = props.data.map((item)=>(
         <li key={item.id}>{item.name}</li>
     ))

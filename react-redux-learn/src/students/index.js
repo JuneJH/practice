@@ -1,5 +1,5 @@
 import createAcionts from './redux/student'
-import {connect} from 'react-redux'
+import {connect} from '../react-redux-code'
 import List from './List'
 
 
