@@ -1,6 +1,6 @@
 import types from './actionTypes'
 const initState = {
-    condtion: {},
+    condition: {page:1,pagesize:100},
     students: [],
     loading: false
 }
@@ -9,7 +9,7 @@ export default function (state = initState, { type, payload }) {
         case types.CONDITION:
             return {
                 ...state,
-                condtion: payload
+                condition: {...payload}
             };
         case types.STUDENTS:
             return {
@@ -23,6 +23,6 @@ export default function (state = initState, { type, payload }) {
             };
 
         default:
-            break;
+            return {...state};
     }
 }
