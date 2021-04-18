@@ -5,8 +5,11 @@ import {connect} from 'dva'
     return (
         <div>
             <h1>{props.number}</h1>
+            <button onClick={()=>{props.asyncIncrease()}}>异步+</button>
             <button onClick={()=>{props.increase()}}>+</button>
             <button onClick={()=>{props.decrease()}}>-</button>
+            <button onClick={()=>{props.asyncDecrease()}}>异步</button>
+
         </div>
     )
 }
@@ -23,6 +26,12 @@ const mapDispatch2Props = (dispatch)=>{
         },
         decrease(){
             dispatch({type:"counter/decrease"})
+        },
+        asyncIncrease(){
+            dispatch({type:"counter/asyncIncrease"})
+        },
+        asyncDecrease(){
+            dispatch({type:"counter/asyncDecrease"})
         }
     }
 }
