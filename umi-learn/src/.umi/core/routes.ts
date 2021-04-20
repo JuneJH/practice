@@ -7,19 +7,9 @@ import { plugin } from './plugin';
 export function getRoutes() {
   const routes = [
   {
-    "path": "/a",
-    "exact": true,
-    "component": require('@/pages/a.js').default
-  },
-  {
-    "path": "/b",
-    "exact": true,
-    "component": require('@/pages/b.js').default
-  },
-  {
-    "path": "/sub",
-    "exact": true,
-    "component": require('@/pages/sub/index.js').default
+    "path": "/",
+    "component": require('C:/Users/JuneLy/Desktop/practice/umi-learn/src/pages/index').default,
+    "exact": true
   }
 ];
 

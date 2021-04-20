@@ -1,10 +1,9 @@
 import React from 'react'
 
-export default function a() {
+export default function index() {
     return (
         <div>
-            A 页面  
+            <h1>首页</h1>
         </div>
     )
 }
- 
