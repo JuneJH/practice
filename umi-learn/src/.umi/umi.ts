@@ -4,8 +4,8 @@ import '@@/core/devScripts';
 import { plugin } from './core/plugin';
 import './core/pluginRegister';
 import { createHistory } from './core/history';
-import { ApplyPluginsType } from 'C:/Users/JuneLy/AppData/Roaming/npm/node_modules/umi/node_modules/@umijs/runtime';
-import { renderClient } from 'C:/Users/JuneLy/AppData/Roaming/npm/node_modules/umi/node_modules/@umijs/renderer-react/dist/index.js';
+import { ApplyPluginsType } from 'C:/Users/JuneLy/Desktop/practice/umi-learn/node_modules/@umijs/runtime';
+import { renderClient } from 'C:/Users/JuneLy/Desktop/practice/umi-learn/node_modules/@umijs/renderer-react/dist/index.js';
 import { getRoutes } from './core/routes';
 
 
@@ -37,7 +37,7 @@ export default clientRender();
 
 
     window.g_umi = {
-      version: '3.4.10',
+      version: '3.4.11',
     };
   
 

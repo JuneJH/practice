@@ -11,6 +11,7 @@ export default function index(props) {
                 <Link style={{marginLeft:10}} to="/a">A页</Link>
                 <Link style={{marginLeft:10}} to="/b">B页</Link>
                 <Link style={{marginLeft:10}} to="/sub">Sub页</Link>
+                <Link style={{marginLeft:10}} to="/counter">计数器页</Link>
             </header>
             <div style={{margin:100}}>
                 {props.children}

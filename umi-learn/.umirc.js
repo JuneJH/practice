@@ -1,6 +1,5 @@
 export default {
-    routes:[{
-        path:"/",
-        component:"./index"
-    }]
-} 
+  dva:{
+      hmr:false,
+  }
+}

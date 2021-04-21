@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { createBrowserHistory, History } from 'C:/Users/JuneLy/AppData/Roaming/npm/node_modules/umi/node_modules/@umijs/runtime';
+import { createBrowserHistory, History } from 'C:/Users/JuneLy/Desktop/practice/umi-learn/node_modules/@umijs/runtime';
 
 let options = {
   "basename": "/"
