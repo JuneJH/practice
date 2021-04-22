@@ -1,11 +1,10 @@
-import styles from './index.css';
 
+import Layout from '../components/layout'
 function BasicLayout(props) {
   return (
-    <div className={styles.normal}>
-      <h1 className={styles.title}>Yay! Welcome to umi!</h1>
+   <Layout>
       {props.children}
-    </div>
+   </Layout>
   );
 }
 
