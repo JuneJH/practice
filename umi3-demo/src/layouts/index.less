@@ -1,0 +1,41 @@
+.container{
+    height: 100%;
+    width: 100%;
+   header{
+       height: 60px;
+       line-height: 60px;
+       box-sizing: border-box;
+       width: 100%;
+       padding: 0 15px;
+       color:#fff;
+       background-color: #222;
+       display: flex;
+       justify-content: space-between;
+       h1{
+           color:inherit
+       }
+       button{
+           border:none;
+           background-color: transparent;
+           cursor: pointer;
+       }
+   }
+   .mainContainer{
+       width: 100%;
+       height: calc(100% - 60px);
+       min-width: 1200px;
+       min-height: 860px;
+       display: flex;
+       aside{
+           width: 200px;
+           color:#fff;
+           background-color: #333;
+       }
+       .main{
+           padding: 15px;
+           background-color: #eee;
+           flex:1;
+       }
+
+   }
+}
