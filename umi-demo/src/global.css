@@ -5,3 +5,11 @@ html, body, #root {
 body {
   margin: 0;
 }
+
+.active{
+  color:#008c8c;
+}
+a{
+  color:inherit;
+  text-decoration: none;
+}
