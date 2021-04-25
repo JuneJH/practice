@@ -10,6 +10,7 @@ import {IRouteProps,history} from 'umi'
                 <h1>后台管理系统</h1>
                 <div>
                     <button onClick={()=>{
+                        window.localStorage.removeItem("token")
                         history.push("/login")
                     }}>退出</button>
                 </div>
