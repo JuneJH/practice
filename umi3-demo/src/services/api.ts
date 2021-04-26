@@ -11,6 +11,6 @@ export function login(params:{loginId:string,loginPassword:string}){
     return axios.post("/api/login",params)
 }
 
-export function getStudent(){
-    return instance.get("/student");
+export function getStudent(params:any){
+    return instance.get("/student",{params});
 }
