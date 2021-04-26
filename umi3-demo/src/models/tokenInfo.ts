@@ -5,18 +5,18 @@ export default {
     reducers:{
         setLogin(state:any,action:any){
             return {
-                token:action.payload
+                token:action.payloay
             }
         }
     },
-    // subscriptions:{
-    //     syncLocalstorage(a:any){
-    //         const token = localStorage.getItem("token");
-    //         if(token){
-    //             a.dispatch({type:"setLogin",payloay:token})
-    //         }
-    //     }
-    // },
+    subscriptions:{
+        syncLocalstorage(a:any){
+            const token = localStorage.getItem("token");
+            if(token){
+                a.dispatch({type:"setLogin",payloay:token})
+            }
+        }
+    },
     effects:{
         *login(action:any,dva:any):any{
            const result:any = yield dva.call(login,action.payloay)

@@ -4,8 +4,12 @@ import { history, connect } from 'umi';
 
 interface IProps {
   login: any;
+  token:any
 }
 const Login: FC<IProps> = (props) => {
+  if(props.token){
+    history.push("/")
+  }
   const username = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
   return (
@@ -42,8 +46,9 @@ const Login: FC<IProps> = (props) => {
   );
 };
 const mapState = (state:any)=>{
-  console.log(state)
-  return {}
+  return {
+    token:state.tokenInfo.token
+  }
 }
 const mapDispatch = (dispatch: any) => {
   return {
