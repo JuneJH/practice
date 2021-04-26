@@ -1,7 +1,7 @@
 import { login } from "@/services/api"
 import {history} from 'umi'
 export default {
-    state:null,
+    state:{tokenInfo:null},
     reducers:{
         setLogin(state:any,action:any){
             return {
