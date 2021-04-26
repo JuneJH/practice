@@ -1,41 +1,62 @@
-import { login } from '@/services/api';
 import { FC, useRef } from 'react';
 import style from './index.less';
-import {history} from 'umi'
+import { history, connect } from 'umi';
 
-const Login: FC = () => {
-    const username = useRef<HTMLInputElement>(null)
-    const password = useRef<HTMLInputElement>(null)
+interface IProps {
+  login: any;
+}
+const Login: FC<IProps> = (props) => {
+  const username = useRef<HTMLInputElement>(null);
+  const password = useRef<HTMLInputElement>(null);
   return (
     <div className={style.container}>
       <div className={style.main}>
         <h1>登录页</h1>
         <div className={style.item}>
           <label>
-            用户名: <input ref={username}/>
+            用户名: <input ref={username} />
           </label>
         </div>
         <div className={style.item}>
           <label>
-            密码: <input ref={password}/>
+            密码: <input ref={password} />
           </label>
         </div>
-        <div className={style.item} style={{textAlign:'center'}}>
-            <button className={style.btn} onClick={async ()=>{
-              login({loginId:username.current!.value,loginPassword:password.current!.value}).then(res=>{
-                    if(res.headers.authorization){
-                        console.log(res.headers.authorization)
-                        window.localStorage.setItem("token",res.headers.authorization)
-                        history.push("/")
-                    }else{
-                        alert(res.data.data)
-                    }
-              })
-            }}>登录</button>
+        <div className={style.item} style={{ textAlign: 'center' }}>
+          <button
+            className={style.btn}
+            onClick={async () => {
+              props.login({
+                loginId: username.current!.value,
+                loginPassword: password.current!.value,
+              });
+            }}
+          >
+            登录
+          </button>
         </div>
       </div>
     </div>
   );
 };
+const mapState = (state:any)=>{
+  console.log(state)
+  return {}
+}
+const mapDispatch = (dispatch: any) => {
+  return {
+    async login(params: any) {
+      const result = await dispatch({
+        type: 'tokenInfo/login',
+        payloay: params,
+      });
+      if (result) {
+        history.push('/');
+      } else {
+        alert('用户或者密码错误');
+      }
+    },
+  };
+};
 
-export default Login;
+export default connect(mapState, mapDispatch)(Login);
