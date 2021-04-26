@@ -14,13 +14,15 @@ const Login: FC<IProps> = (props) => {
         <h1>登录页</h1>
         <div className={style.item}>
           <label>
-            用户名: <input ref={username} />
+            用户: 
           </label>
+          <input ref={username} />
         </div>
         <div className={style.item}>
           <label>
-            密码: <input ref={password} />
+            密码: 
           </label>
+          <input ref={password} type="password" />
         </div>
         <div className={style.item} style={{ textAlign: 'center' }}>
           <button

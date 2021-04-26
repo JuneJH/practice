@@ -1,7 +1,9 @@
 import React, { FC } from 'react'
 import style from './index.less'
 import Menu from '../components/menu'
-import {IRouteProps,history} from 'umi'
+import {IRouteProps,connect} from 'umi';
+
+
  const Layout:FC<IRouteProps> = (props)=> {
      if(props.location.pathname === "/login")return props.children
     return (
@@ -9,10 +11,7 @@ import {IRouteProps,history} from 'umi'
             <header>
                 <h1>后台管理系统</h1>
                 <div>
-                    <button onClick={()=>{
-                        window.localStorage.removeItem("token")
-                        history.push("/login")
-                    }}>退出</button>
+                    <button onClick={props.logout}>退出</button>
                 </div>
             </header>
             <section className={style.mainContainer}>
@@ -27,4 +26,13 @@ import {IRouteProps,history} from 'umi'
     )
 } 
 
-export default Layout
+const map2Dispatch = (dispatch:any)=>{
+    return {
+        logout(){
+            dispatch({type:"tokenInfo/logout"})
+        }
+    }
+
+}
+
+export default connect(null,map2Dispatch)(Layout)

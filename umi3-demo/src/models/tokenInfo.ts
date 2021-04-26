@@ -1,5 +1,5 @@
 import { login } from "@/services/api"
-
+import {history} from 'umi'
 export default {
     state:null,
     reducers:{
@@ -20,6 +20,7 @@ export default {
     effects:{
         *login(action:any,dva:any):any{
            const result:any = yield dva.call(login,action.payloay)
+           console.log(result)
            if(result.headers.authorization){
                yield dva.put({type:"setLogin",payloay:result.headers.authorization})
                window.localStorage.setItem("token",result.headers.authorization)
@@ -29,6 +30,8 @@ export default {
           
         },
         *logout(action:any,dva:any):any{
+            window.localStorage.removeItem("token")
+            history.push("/login")
             yield dva.put({type:"setLogin",payloay:null})
             return null;
         }
