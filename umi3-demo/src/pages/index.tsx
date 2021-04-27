@@ -51,11 +51,9 @@ const mapDispatch = (dispatch:any)=>{
   return {
     onPrve(page:number){
       dispatch({type:"students/setCondition",payloay:{page}})
-      dispatch({type:"students/fetchStudent"})
     },
     onNext(page:number){
       dispatch({type:"students/setCondition",payloay:{page}})
-      dispatch({type:"students/fetchStudent"})
     }
   }
 }

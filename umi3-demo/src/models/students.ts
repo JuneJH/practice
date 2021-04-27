@@ -1,4 +1,6 @@
-import {getStudent} from '@/services/api'
+import {getStudent} from '@/services/api';
+import {routerRedux} from 'dva/router';
+
 export default {
     state:{
         condition:{
@@ -9,13 +11,23 @@ export default {
         data:[]
     },
     subscriptions:{
-        initStudents({dispatch}:any){
-            dispatch({type:"fetchStudent"})
+        listener({history,dispatch}:any){
+            history.listen((location:any)=>{
+                if(location.pathname !== "/"){
+                    return;
+                }
+                const condition = location.query;
+                dispatch({type:"changeCondition",payloay:{
+                    page:parseInt(condition.page),
+                    pagesize:parseInt(condition.pagesize),
+                }})
+                dispatch({type:"fetchStudent"})
+            })
 
         }
     },
     reducers:{
-        setCondition(state:any,action:any){
+        changeCondition(state:any,action:any){
             return {
                 ...state,
                 condition:{
@@ -38,6 +50,14 @@ export default {
         }
     },
     effects:{
+        *setCondition(action:any,saga:any):any{
+            let condition =yield saga.select((state:any)=>state.students.condition)
+            condition = {
+                ...condition,
+                ...action.payloay
+            }
+            yield saga.put(routerRedux.push(`?page=${condition.page}&pagesize=${condition.pagesize}`))
+        },
         *fetchStudent(action:any,saga:any):any{
             console.log("请求数据")
             const condition = yield saga.select((state:any)=>{return state.students.condition})
