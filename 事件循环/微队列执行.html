@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">123123</div>
+    <script>
+      const div = document.getElementById("root");
+      div.addEventListener("click", () => {
+        console.log("标签div的style属性变为红色");
+        div.style.color = "red";
+        new Promise((res)=>{res()}).then(()=>{
+          alert("微任务1");
+          new Promise((res)=>{setTimeout(()=>{res()})}).then(()=>{
+            div.style.color = "orange";
+            alert("微任务1-1");
+          })
+        });
+        new Promise((res)=>{res()}).then(()=>{
+          alert("微任务2");
+        })
+        new Promise((res)=>{res()}).then(()=>{
+          alert("微任务3");
+        })
+      });
+    </script>
+  </body>
+</html>
