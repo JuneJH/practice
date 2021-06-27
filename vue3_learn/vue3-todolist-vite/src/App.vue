@@ -87,13 +87,18 @@
   }
   .ul-container li{
     list-style: none;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(221, 221, 221, 0.603);
     width: 100%;
     padding: 15px 5px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     margin: 5px 0;
+    cursor: pointer;
+    transition: background .3s;
+  }
+  .ul-container li:hover{
+    border: 1px solid #ddd;
   }
   .todo-msg{
     margin: 0 15px;
