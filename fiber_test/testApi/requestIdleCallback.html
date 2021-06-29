@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>requestIdleCallback</title>
+  </head>
+  <body>
+    <script>
+        // window.requestIdleCallback()方法将在浏览器的空闲时段内调用的函数排队。
+        // 这使开发者能够在主事件循环上执行后台和低优先级工作，而不会影响延迟关键事件，如动画和输入响应。
+        // 函数一般会按先进先调用的顺序执行，然而，如果回调函数指定了执行超时时间timeout，则有可能为了在超时前执行函数而打乱执行顺序。
+        // --MDN
+      // 任务列表
+      const taskQueue = [
+        () => {
+          console.log("run task 1");
+          const curr = new Date();
+          while (new Date() - curr < 30) {}
+          console.log("run task 1 over");
+        },
+        () => {
+          console.log("run task 2");
+        },
+        () => {
+          console.log("run task 3");
+        },
+      ];
+
+      // 执行机制
+      function run(idleDeadline) {
+        console.log("本帧剩余时间", idleDeadline.timeRemaining());
+        console.log("是否超时", idleDeadline.didTimeout);
+        while (idleDeadline.timeRemaining() > 0 || idleDeadline.didTimeout) {
+          if (taskQueue.length < 1) return;
+          taskQueue.shift()();
+        }
+        // 如果还有任务再申请
+        if (taskQueue.length > 0) {
+          window.requestIdleCallback(run, { timeout: 1000 });
+        }
+      }
+
+      window.requestIdleCallback(run, { timeout: 1000 });
+    </script>
+  </body>
+</html>
