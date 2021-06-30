@@ -1,20 +1,18 @@
-import React,{useState} from 'react';
-import ReactDOM from 'react-dom';
-
-function Func(){
-  const [state, setState] = useState("state");
-  const [test, setTest] = useState("test-value")
-
-  return (
-    <h2>{state}-{test}</h2>
-  )
+import React from 'react';
+// import ReactDOM from 'react-dom';
+import ReactDOM from './myReact/react-dom'
+function FunComponet(props){
+  return (<h1>
+    <a href="http://www.baidu.com">我是函数组件</a>
+    <span>{props.name}</span>
+  </h1>)
 }
 const jsx = (<div>
-  <h1>hello</h1>
-  <Func/>
+  <h1 style={{color:"red"}}>hello</h1>
+  <div>Fiber</div>
+  <FunComponet name="我是参数"/>
 </div>)
 
-console.log(jsx)
 
 ReactDOM.render(jsx,
   document.getElementById('root')
