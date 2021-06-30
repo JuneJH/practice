@@ -1,34 +1,30 @@
 <template>
-  <h1>hello vue3</h1>
-  <h2>count: {{count}}</h2>
-  <button @click="decrease">decrease</button>
-  <button @click="increase">increase</button>
+  <div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </div>
+  <router-view />
 </template>
 
-<script>
-
-import {ref} from 'vue'
-export default {
-  setup(){
-    let count = ref(0);
-    const decrease = ()=>{
-      count.value ++;
-    }
-    const increase = ()=>{
-      count.value --;
-    }
-
-    return {
-      count,
-      decrease,
-      increase
-    }
-
-  }
-
+<style lang="less">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
-</script>
 
-<style>
+#nav {
+  padding: 30px;
 
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
 </style>
