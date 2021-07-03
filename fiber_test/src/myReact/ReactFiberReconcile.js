@@ -1,5 +1,5 @@
 import { createFiber } from "./fiber";
-
+// 处理原生节点
 export function updateHostComponent(wip) {
     // 更新节点自己
     if (!wip.stateNode) {
@@ -8,9 +8,7 @@ export function updateHostComponent(wip) {
     // 协调子节点
     reconcileChildren(wip, wip.props.children);
 } 
-
-
-
+// 处理函数组件
 export function updateFuncitonComponent(wip) {
     // 更新节点自己
     // if (!wip.stateNode) {
@@ -23,30 +21,14 @@ export function updateFuncitonComponent(wip) {
     reconcileChildren(wip,children);
 } 
 
-function render(vnode, container) {
-    const node = createNode(vnode);
-    container.appendChild(node);
-}
-
+// 创建真实dom
 function createNode(vnode) {
     const { type, props } = vnode;
     const node = document.createElement(type);
     updateNode(node, props);
-    reconcileChildren(node, props.children);
     return node;
 }
-
-// 
-// function reconcileChildren(parentNode, children) {
-//     if (typeof children === "string" || !children) {
-//         return;
-//     }
-//     for (let i = 0; i < children.length; i++) {
-//         const child = children[i];
-//         render(child, parentNode)
-//     }
-// }
-
+// 更新属性
 function updateNode(node, nextVal) {
     Object.keys(nextVal).forEach(key => {
         if (key === "children") {
@@ -72,12 +54,12 @@ function transformStyle(obj) {
     return str;
 }
 
-// 初次渲染，更新
+// 调和子节点
 function reconcileChildren(wip, children) {
     if (typeof children === "string") {
         return;
     }
-    const newChildren = Array(children) ? children : [children];
+    const newChildren = Array.isArray(children) ? children : [children];
     let previousNewFiber = null
     for (let i = 0; i < newChildren.length; i++) {
         const newChild = newChildren[i];

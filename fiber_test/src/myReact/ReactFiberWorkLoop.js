@@ -1,7 +1,14 @@
 import {updateHostComponent,updateFuncitonComponent} from './ReactFiberReconcile'
-requestIdleCallback(workLoop)
 
-let nextUnitofWork = null;
+let wipRoot = null; // 标记根节点
+let nextUnitofWork = null;  // 记录下一个需要转换的
+// 初始化
+export function scheduleUpdateOnFiber(fiber){
+    wipRoot = fiber;
+    wipRoot.sibling = null;
+    nextUnitofWork = wipRoot;
+}
+requestIdleCallback(workLoop)
 function workLoop(IdleDeadline) {
     while (nextUnitofWork && IdleDeadline.timeRemaining() > 0) {
         nextUnitofWork = performUnitOfwork(nextUnitofWork);
@@ -11,7 +18,6 @@ function workLoop(IdleDeadline) {
         commitRoot();
     }
 }
-
 function performUnitOfwork(workInProgress) {
     // 1. 更新当前任务
     const {type} = workInProgress;
@@ -20,7 +26,6 @@ function performUnitOfwork(workInProgress) {
     }else if(typeof type === "function"){
         updateFuncitonComponent(workInProgress)
     }
-
     // 返回下一个任务 深度优先
     if (workInProgress.child) {
         return workInProgress.child;
@@ -32,20 +37,12 @@ function performUnitOfwork(workInProgress) {
         }
         next = next.return;
     }
-
     return null;
 }
-let wipRoot = null;
-export function scheduleUpdateOnFiber(fiber){
-    wipRoot = fiber;
-    wipRoot.sibling = null;
-    nextUnitofWork = wipRoot;
-}
-
+// 提交
 function commitRoot(){
     commitWorker(wipRoot.child);
 }
-
 function commitWorker(wip){
     if(!wip)return;
     //1.更新自己
@@ -59,7 +56,6 @@ function commitWorker(wip){
     // 3. 更新兄弟
     commitWorker(wip.sibling)
 }  
-
 function getParentNode(wip){
     let temp = wip;
     while(temp){
