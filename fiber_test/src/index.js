@@ -1,15 +1,20 @@
-import React from 'react';
-// import ReactDOM from 'react-dom';
-import ReactDOM from './myReact/react-dom-v15'
-function FunComponet(props){
-  return (<h1>
-    <a href="http://www.baidu.com" style={{color:"orange"}}>我是函数组件</a>
-    <span>{props.name}</span>
-  </h1>)
+import React, { useReducer } from 'react';
+import ReactDOM from 'react-dom';
+// import ReactDOM from './myReact/react-dom-v15'
+
+
+function Fn() {
+  const [state, dispatch] = useReducer((x) => x + 1, 1);
+  return <div>
+    <h2>this is function component</h2>
+    <span>{state}</span>
+    <button onClick={()=>{dispatch({ type: "1" })}}>++</button>
+  </div>
 }
 const jsx = (<div>
-  <h1 style={{color:"red"}}>hello</h1>
+  <h1 style={{ color: "red" }}>hello</h1>
   <div>Fiber</div>
+  <Fn />
   {/* <FunComponet name="我是参数"/> */}
 </div>)
 
