@@ -1,13 +1,14 @@
-import React, { useReducer } from 'react';
-import ReactDOM from 'react-dom';
-// import ReactDOM from './myReact/react-dom-v15'
+import  { useReducer } from './myReact/react';
+// import ReactDOM from 'react-dom';
+import ReactDOM from './myReact/react-dom';
+import React from 'react';
 
 
 function Fn() {
-  const [state, dispatch] = useReducer((x) => x + 1, 1);
+  const [state, dispatch] = useReducer((x) => {console.log("使用结果返回",x);return x + 1}, 1);
   return <div>
     <h2>this is function component</h2>
-    <span>{state}</span>
+    <span>状态值：{state}</span>
     <button onClick={()=>{dispatch({ type: "1" })}}>++</button>
   </div>
 }

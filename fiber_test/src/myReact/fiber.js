@@ -16,6 +16,8 @@ export function createFiber(vnode,returnFiber){
         stateNode:null,
         // 标记fiber是干嘛的,插入，更新,删除
         flags:null,
+        // 指向老节点
+        alternate:null
     }
     return fiber;
 }
