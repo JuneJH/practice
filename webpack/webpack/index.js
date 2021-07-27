@@ -8,7 +8,6 @@ const babel = require("@babel/core");
 function getModuleInfo(filesPath){
     const deps = [];
     const codes = fs.readFileSync(filesPath,"utf-8");
-
     const ast = parser.parse(codes,{
         sourceType:"module",
     })
