@@ -1,0 +1,16 @@
+{
+  "name": "vite-demo",
+  "version": "1.0.0",
+  "description": "实践vite",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemo": "^1.0.0",
+    "npx": "^10.2.2",
+    "vue": "^3.1.5"
+  },
+  "scripts": {
+    "start": "nodemon ./index.js"
+  }
+}
