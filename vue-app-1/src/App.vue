@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import Hello from "./components/Helloorld.vue";
+import Hello from "./components/HelloWorld.vue";
 export default {
   components:{Hello},
   data(){
