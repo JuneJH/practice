@@ -3,12 +3,21 @@
     <div id="nav">
       <div @click="$store.commit({type:'increase'})">Count:{{$store.state.count}}</div>
       <div @click="$store.dispatch({type:'asyncDbIncrease'})">asyncCount:{{$store.state.dbCount}}</div>
+      <div>getter:得到State的属性个数:{{$store.getter.getStateCount}}</div>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  created(){
+    console.log(this.$store)
+  }
+}
+</script>
 
 <style>
 #app {

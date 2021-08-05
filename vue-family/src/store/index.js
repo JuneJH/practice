@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Vuex from 'vuex'
+import Vuex from '../../vue/my-vuex'
 
 Vue.use(Vuex)
 
@@ -24,6 +24,11 @@ export default new Vuex.Store({
     asyncDbIncrease:async ({dispatch,commit})=>{
       await dispatch({type:"asyncIncrease"});
       commit({type:"dbIncrease"})
+    }
+  },
+  getter:{
+    getStateCount:state=> {
+      return state.count + state.dbCount
     }
   },
   modules: {
