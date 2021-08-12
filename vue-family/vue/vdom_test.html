@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script src="./my-vue-vdom.js"></script>
+    <script>
+        const app = new JVue({
+            el:"#app",
+            data(){
+                return {
+                    foo:33,
+                    bar:22
+                }
+            },
+            render(h){
+                return h("div",this.foo)
+            }
+        });
+
+        setInterval(()=>{
+            app.foo ++;
+        },1000)
+
+
+    </script>
+</body>
+</html>
