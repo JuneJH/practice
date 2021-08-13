@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="app">
-
+        {{foo}}
     </div>
     <script src="./my-vue-vdom.js"></script>
     <script>
@@ -16,12 +16,18 @@
             el:"#app",
             data(){
                 return {
-                    foo:33,
+                    foo:1,
                     bar:22
                 }
             },
             render(h){
-                return h("div",this.foo)
+                return h("div",null,[...(()=>{
+                    const result = []
+                    for(let i = 1; i < this.foo; i ++){
+                        result.push(h("div",null,i))
+                    }
+                    return result;
+                })(),h("p",null,this.bar)])
             }
         });
 
