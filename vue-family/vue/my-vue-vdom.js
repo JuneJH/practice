@@ -101,7 +101,12 @@ class JVue {
             const oldV = oldch[i];
             const v = ch[i];
            if(typeof oldV === "object" && typeof v === "object"){
-               this.__patch__(oldV,v)
+               if(oldV.tag === v.tag){
+                this.patchVnode(oldV,v)
+               }else{
+                this.createElm(v,elm,null);
+                elm.removeChild(oldV.elm)
+               }
            }
         }
         if(oldLen === vlen){
