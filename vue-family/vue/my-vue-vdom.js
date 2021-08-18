@@ -13,6 +13,9 @@ class JVue {
             this.mountComponent(options.el);
         }
     }
+    $mount(el){
+        this.mountComponent(el);
+    }
     mountComponent(el) {
         this.$el = document.querySelector(el || "body");
         let updateComponent = () => {
