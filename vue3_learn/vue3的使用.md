@@ -2,6 +2,9 @@
 
 ## 1. 搭建工程
 
+> vue-cli v4
+> vite
+
 ## 2. 创建vue实例
 
 vue2 -> Vue
