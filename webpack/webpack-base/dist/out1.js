@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log((3,2,Math.abs(1)))})();

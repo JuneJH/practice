@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("i am june"),console.log(5)})();

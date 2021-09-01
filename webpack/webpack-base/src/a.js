@@ -1,3 +1,3 @@
-export function j(a,b){
+export function disincrease(a,b){
     return Math.abs(a - b);
 }
