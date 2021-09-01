@@ -24,6 +24,7 @@ export default {
   },
   mounted() {
     window.v = this.vmode;
+    console.log("组件实例",this)
   },
   data() {
     return {
