@@ -20,12 +20,10 @@
             const deps = new Dep();
             Object.defineProperty(obj, key, {
                 get() {
-                    console.log("geter!!!", Dep.target);
                     Dep.target && deps.add(Dep.target);
                     return val;
                 },
                 set(newVal) {
-                    console.log("setter", deps)
                     if (newVal !== val) {
                         if (typeof val === "object") {
                             observe(newVal);
@@ -52,7 +50,6 @@
                 this.updated();
             }
             updated() {
-                console.log("vm", this.vm)
                 this.update.call(this.vm)
             }
         }
