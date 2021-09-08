@@ -14,6 +14,8 @@
       </label>
     </div>
     <button @click="isShow = !isShow">更改显示</button>
+
+    <div>test:{{test}}</div>
   </div>
 </template>
 <script>
@@ -30,10 +32,20 @@ export default {
     return {
       vmode: {
         value: 123,
+       
         
       },
+       test:"data",
       isShow:false
     };
   },
+  computed:{
+    test:()=>this.test+" computed"
+  },
+  methods:{
+    test(){
+      return "methods"
+    }
+  }
 };
 </script>
