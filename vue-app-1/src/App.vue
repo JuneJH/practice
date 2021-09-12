@@ -24,10 +24,18 @@ export default {
   components: {
     VModel,
   },
-  mounted() {
-    window.v = this.vmode;
-    console.log("组件实例",this)
+  beforeCreate(){
+    console.log("beforeCreate",this)
   },
+  created(){console.log("created",this)},
+  beforeMount(){console.log("beforeMount",this)},
+  mounted() {
+    console.log("mounted",this)
+  },
+  beforeUpdate(){
+    console.log("beforeUpdate",this)
+  },
+  updated(){console.log("updated",this)},
   data() {
     return {
       vmode: {
@@ -39,13 +47,13 @@ export default {
       isShow:false
     };
   },
-  computed:{
-    test:()=>this.test+" computed"
-  },
-  methods:{
-    test(){
-      return "methods"
-    }
-  }
+  // computed:{
+  //   test:()=>this.test+" computed"
+  // },
+  // methods:{
+  //   test(){
+  //     return "methods"
+  //   }
+  // }
 };
 </script>
