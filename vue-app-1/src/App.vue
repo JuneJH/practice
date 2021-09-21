@@ -15,7 +15,7 @@
     </div>
     <button @click="isShow = !isShow">更改显示</button>
 
-    <div>test:{{test}}</div>
+    <div id="test">test:{{test}}</div>
   </div>
 </template>
 <script>
@@ -30,7 +30,13 @@ export default {
   created(){console.log("created",this)},
   beforeMount(){console.log("beforeMount",this)},
   mounted() {
-    console.log("mounted",this)
+    console.log("mounted",this);
+    const testOm = document.getElementById("test");
+    this.test = "修改了";
+    console.log("1",testOm.innerText);
+    this.$nextTick(()=>{
+      console.log("2",testOm.innerText);
+    })
   },
   beforeUpdate(){
     console.log("beforeUpdate",this)
@@ -40,8 +46,6 @@ export default {
     return {
       vmode: {
         value: 123,
-       
-        
       },
        test:"data",
       isShow:false
