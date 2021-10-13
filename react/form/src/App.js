@@ -1,18 +1,12 @@
-import Form from './components/form';
+import FormV1Page from "./pages/formV1Page"
+import FormV2Page from "./pages/formV2Page"
 function App() {
   return (
     <div className="App">
-      <Form onSubmit={(data) => { console.log(data) }}>
-        <div>
-          <Form.Input name="username"></Form.Input>
-        </div>
-        <div>
-          <Form.Input name="password" type="password"></Form.Input>
-        </div>
-        <div>
-          <Form.Button>提交</Form.Button>
-        </div>
-      </Form>
+      <h1>=====方案v1======</h1>
+      <FormV1Page/>
+      <h1>=====方案v2=====</h1>
+      <FormV2Page/>
     </div>
   );
 }
