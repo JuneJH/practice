@@ -4,7 +4,10 @@ import useForm from "./useForm";
 
 function Form({children}) {
     const [formInstance] = useForm();
-    return <form>
+    return <form onSubmit={e=>{
+        e.preventDefault();
+        console.log(formInstance.getForm())
+    }}>
         <FormProvider value={formInstance}>
             {children}
         </FormProvider>

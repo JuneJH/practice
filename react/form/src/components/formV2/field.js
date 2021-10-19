@@ -17,7 +17,6 @@ export default class Field extends React.Component{
     }
     render(){
         const {children} = this.props;
-        console.log("run")
         return React.cloneElement(children,this.enPropsHandle());
     }
 }
