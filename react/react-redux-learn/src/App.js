@@ -1,9 +1,9 @@
-import React from 'react'
 // import Counter from './react_redux/Counter'
-import { Provider } from './react-redux-code';
+// import { Provider } from './react-redux-code';
 // import store from './redux'
-import Students from './students'
-import store from './students/redux'
+// import Students from './students'
+// import store from './students/redux'
+import TestMyRedux from './test/testMyReadux'
 export default function App() {
   return (
     // <Provider store={store}>
@@ -11,9 +11,10 @@ export default function App() {
     // </Provider>
 
 
-    <Provider store={store}>
-      <Students />
-    </Provider>
+    // <Provider store={store}>
+    //   <Students />
+    // </Provider>
+    <TestMyRedux/>
 
   )
 }
