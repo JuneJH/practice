@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import store from './myStore'
+import store from './myStore';
 export default class testMyReadux extends Component {
     componentDidMount(){
         this.cancelSub = store.subscribe(()=>{

@@ -1,6 +1,5 @@
 export function logger({getState,dispatch}){
     return next=>{
-        console.log("next",next)
         return action=>{
             console.log(`==============${new Date()}===============`)
             console.log(`action:%c  ${action.type}`,"color:red;")

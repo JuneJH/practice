@@ -3,7 +3,10 @@
 // import store from './redux'
 // import Students from './students'
 // import store from './students/redux'
-import TestMyRedux from './test/testMyReadux'
+// import TestMyRedux from './test/testMyReadux'
+import TestMyRedux from './test/testMyReactRedux'
+import store from './test/myStore';
+import {Provider} from './myReactRedux'
 export default function App() {
   return (
     // <Provider store={store}>
@@ -14,7 +17,10 @@ export default function App() {
     // <Provider store={store}>
     //   <Students />
     // </Provider>
+    <Provider store={store}>
+
     <TestMyRedux/>
+    </Provider>
 
   )
 }
