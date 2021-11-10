@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {connect} from '../myReactRedux'
+import {connect,useSelector,useDispatch} from '../myReactRedux'
+
 class testMyReadux extends Component {
     componentDidMount(){
         console.log("this.props",this.props)
@@ -20,9 +21,19 @@ class testMyReadux extends Component {
                     dispatch({type:"ADD"})   
                 }}>ADD</button>
                 <button onClick={this.asynAdd}>asynAdd</button>
+                <h1>hooks 使用</h1>
+                <TestMyHooksRedux/>
             </div>
         )
     }
+}
+
+function TestMyHooksRedux(){
+    const state = useSelector(state => state)
+    const dispatch = useDispatch()
+    return <div onClick={()=>{
+        dispatch({type:"ADD"})
+    }}>{state}</div>
 }
 
 
