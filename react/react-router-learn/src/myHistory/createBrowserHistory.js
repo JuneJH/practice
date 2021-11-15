@@ -107,5 +107,3 @@ function createLocation(basename) {
     location.state = state;
     return location;
 }
-
-window.myH = createBrowserHistory()
