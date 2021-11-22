@@ -29,8 +29,6 @@ export default {
         }
     }
 }
-
-
 function delay(duration){
     return new Promise(resove=>{
         setTimeout(()=>{
