@@ -94,7 +94,20 @@ function workLoop(IdleDeadline) {
 
 function commitRoot() { }
 
-function performUnitOfwork(fiber) { }
+function performUnitOfwork(workInProgress) { 
+    updateHostComponent(workInProgress);
+
+    if(workInProgress.child){
+        return workInProgress.child;
+    }
+    let nextWorkInProgress = workInProgress;
+    while(nextWorkInProgress){
+        if(nextWorkInProgress.sibling){
+            return nextWorkInProgress.sibling;
+        }
+        nextWorkInProgress = nextWorkInProgress.return;
+    }
+}
 
 
 
