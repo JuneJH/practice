@@ -1,14 +1,21 @@
-// import { Component } from 'react';
+// import { Component ,useState} from 'react';
 // import ReactDOM from 'react-dom';
 import "./index.css";
-import ReactDOM from './myReact/react-dom/index_v1';
+import ReactDOM ,{useState}from './myReact/react-dom/index_v2';
 import {Component} from './myReact/react/Component'
 
 function FunctionComponent(props){
+  const [state, setState] = useState(0)
   const {name} = props;
   return <div className="border">
     <div>hello FunctionComponent</div>
     <div>{"props:"+name}</div>
+    <div>{"state:"+state}</div>
+    
+    <button onClick={()=>{
+      setState(state + 1);
+      console.log("click")
+    }}>加一</button>
   </div>
 }
 
