@@ -4,7 +4,6 @@ function render(vnode, container) {
         props: { children: vnode },
     }
     nextUnitofWork = wipRoot;
-    console.log("====", wipRoot)
 }
 
 function createNode(workInProgress) {
@@ -18,7 +17,6 @@ function createNode(workInProgress) {
 }
 // 原生元素
 function updateHostComponent(workInProgress) {
-    const { type } = workInProgress;
     if (!workInProgress.stateNode) {
         workInProgress.stateNode = createNode(workInProgress);
     }
@@ -38,17 +36,17 @@ function updateClassComponent(workInProgress) {
     reconcileChildren(workInProgress, children);
 }
 // 片段
-function updateFragment(vnode) {
-    const { props } = vnode;
-    const { children } = props;
-    const node = document.createDocumentFragment();
-    if (typeof children === "string") {
-        createTextNode(children, node)
-    } else {
-        reconcileChildren(children, node)
-    }
-    return node;
-}
+// function updateFragment(vnode) {
+//     const { props } = vnode;
+//     const { children } = props;
+//     const node = document.createDocumentFragment();
+//     if (typeof children === "string") {
+//         createTextNode(children, node)
+//     } else {
+//         reconcileChildren(children, node)
+//     }
+//     return node;
+// }
 // 更新原生元素属性
 function updateNode(node, props) {
     Object.keys(props).forEach(key => {
@@ -89,10 +87,10 @@ function reconcileChildren(workInProgress, children) {
 
 }
 
-function createTextNode(text, node) {
-    const textNode = document.createTextNode(text);
-    node.appendChild(textNode);
-}
+// function createTextNode(text, node) {
+//     const textNode = document.createTextNode(text);
+//     node.appendChild(textNode);
+// }
 
 requestIdleCallback(workLoop)
 
