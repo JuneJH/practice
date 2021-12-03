@@ -6,14 +6,16 @@ import {Component} from './myReact/react/Component'
 
 function FunctionComponent(props){
   const [state, setState] = useState(0)
+  const [visible, setVisible] = useState(false)
   const {name} = props;
   return <div className="border">
     <div>hello FunctionComponent</div>
     <div>{"props:"+name}</div>
     <div>{"state:"+state}</div>
-    
+    {visible?<span>显示</span>: <div>隐藏</div>}
     <button onClick={()=>{
       setState(state + 1);
+      setVisible(!visible)
       console.log("click")
     }}>加一</button>
   </div>
