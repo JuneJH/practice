@@ -4,6 +4,7 @@
   "description": "nodejs 基础模块",
   "main": "index.js",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "@types/node": "^16.11.12",
     "node": "^17.2.0"

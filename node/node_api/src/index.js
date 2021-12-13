@@ -1,4 +1,1 @@
-const fs = require("fs");
-
-
-console.log(fs)
+import "./fs/index.js"
