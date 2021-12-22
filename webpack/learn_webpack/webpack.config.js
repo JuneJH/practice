@@ -7,6 +7,7 @@
  */
 const path = require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FileListWebpackPlugin = require("./myPlugins/filelist-webpack-plugin")
 
 // .npmrc  => 统一npm配置
 // postcss => postcss.config.css
@@ -46,6 +47,8 @@ module.exports = {
             }]
         }]
     },
-    plugins: [new HtmlWebpackPlugin()],
+    plugins: [new HtmlWebpackPlugin(),new FileListWebpackPlugin()],
     mode: "development",
+
+    // 处理图片 file-loader,url-loader,
 }

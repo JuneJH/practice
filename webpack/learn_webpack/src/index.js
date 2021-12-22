@@ -5,5 +5,5 @@
  * @LastEditors: June
  * @Description: 
  */
-import './index.less'
+// import './index.less'
 console.log("index.js","name")
