@@ -18,7 +18,7 @@ class FormStore {
         return this.store;
     }
 }
-
+// 创建自定义hooks
 export default function useForm() {
     const storeInstance = useRef();
     if (!storeInstance.current) {
