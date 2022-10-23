@@ -1,5 +1,5 @@
 import { FormProvider } from "./formContext";
-import React from "react";
+import React, { useImperativeHandle } from "react";
 import useForm from "./useForm";
 
 /**
@@ -7,11 +7,19 @@ import useForm from "./useForm";
  * @param {*} param0 
  * @returns 
  */
-function Form({children}) {
-    const [formInstance] = useForm();
-    return <form onSubmit={e=>{
+function Form({ children, onFinish, onFinishFail, form }, ref) {
+    const [formInstance] = useForm(form);
+    useImperativeHandle(
+        ref,
+        () => {
+            return formInstance;
+        },
+        [formInstance],
+    )
+    formInstance.setCallback({ onFinish, onFinishFail })
+    return <form onSubmit={e => {
         e.preventDefault();
-        console.log(formInstance.getForm())
+        formInstance.submit();
     }}>
         <FormProvider value={formInstance}>
             {children}
