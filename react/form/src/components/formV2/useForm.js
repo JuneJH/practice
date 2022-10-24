@@ -85,6 +85,7 @@ class FormStore {
 // 创建自定义hooks
 export default function useForm(form) {
     const storeInstance = useRef();
+    // 复用用户创建的form实例，达到状态复用，赋初始值值
     if(form){
         storeInstance.current = form;
     }
