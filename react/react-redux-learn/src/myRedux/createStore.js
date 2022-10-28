@@ -6,7 +6,13 @@
 import { isPlainObject, random } from "./tools";
 
 
-
+/**
+ * 创建一组redux
+ * @param {修改store的规则} reducer 
+ * @param {默认值} defaultState 
+ * @param {使用中间件} enhander 
+ * @returns redux
+ */
 export default function createStore(reducer, defaultState,enhander) {
     if(typeof defaultState === "function"){
         return defaultState(createStore)(reducer)

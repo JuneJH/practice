@@ -1,4 +1,9 @@
 import {compose} from "./tools";
+/**
+ * 使用中间件,增加dispatch能力
+ * @param  {...any} middlewares 中间件列表
+ * @returns redux
+ */
 export default function applyMiddleware(...middlewares){
     return function (createStore){
         return function (reduce,defauleState){
