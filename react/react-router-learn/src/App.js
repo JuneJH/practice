@@ -1,5 +1,5 @@
-import React from 'react';
-// import {BrowserRouter, Route, Switch ,withRouter,NavLink, Link} from 'react-router-dom';
+import React,{useState} from 'react';
+// import {BrowserRouter, Route, Switch, withRouter, NavLink, Link, useHistory, useLocation, useParams,Prompt} from 'react-router-dom';
 import { BrowserRouter, Route, Switch, withRouter, NavLink, Link, useHistory, useLocation, useParams, useMatch } from './react-router-dom'
 
 /**
@@ -11,10 +11,13 @@ function A(props) {
   const history = useHistory();
   const location = useLocation();
   const params = useParams();
-  const match = useMatch();
+  // const match = useMatch();
+  const [visible, setVisible] = useState(true);
   return <div>
     动态路由页面
     获取路由上下文: {params.id}
+    {/* <Prompt when={visible} message="是否离开此页面"></Prompt> */}
+    <button onClick={()=>{setVisible(false)}}>可以离开</button>
   </div>
 }
 const WrapperA = withRouter(A);
