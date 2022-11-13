@@ -7,7 +7,6 @@ export function matchPath(path,url,option){
         return null;
     }
     const params = getParams(key,result.slice(1));
-    console.log(result);
     return {
         params,
         path,
@@ -39,4 +38,3 @@ function getOption(option={}){
 }
 
 const result = matchPath("/news/:id","/News/123")
-console.log(result);

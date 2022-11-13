@@ -1,39 +1,71 @@
 import React from 'react';
-// import "./router/matchRouter";
-// import {BrowserRouter,Route,Link} from 'react-router-dom';
-import { BrowserRouter, Route, Switch ,withRouter,NavLink} from './react-router-dom'
-import "./myHistory/index"
-function A(props){
+// import {BrowserRouter, Route, Switch ,withRouter,NavLink, Link} from 'react-router-dom';
+import { BrowserRouter, Route, Switch, withRouter, NavLink, Link, useHistory, useLocation, useParams, useMatch } from './react-router-dom'
+
+/**
+ * A 页面
+ * @param {*} props 
+ * @returns 
+ */
+function A(props) {
+  const history = useHistory();
+  const location = useLocation();
+  const params = useParams();
+  const match = useMatch();
   return <div>
-    获取路由上下文: {props.location.pathname}
+    动态路由页面
+    获取路由上下文: {params.id}
   </div>
 }
-const WrapperA = withRouter(A)
-function Page(props) {
-  return <div>
-    THIS IS PAGE!
-    <WrapperA/>
-  </div>
-}
+const WrapperA = withRouter(A);
+
 function Page1(props) {
-  return <h1>this is page1</h1>
+  return <h1>
+    页面一
+  </h1>
 }
+/**
+ * Page1
+ * @param {*} props 
+ * @returns 
+ */
+function Page2(props) {
+  return <h1>页面二</h1>
+}
+function notFound(ctx) {
+  console.log("====", ctx)
+  return <h1>404 not found</h1>
+}
+/**
+ * 路由
+ * @param {*} props 
+ * @returns 
+ */
 function Nav(props) {
   return <div>
-    <button onClick={() => { props.history.push("/page") }}>page</button>
-    <button onClick={() => { props.history.push("/page1") }}>page1</button>
+    <Link to="/page1">Page1</Link>
+    <span> == </span>
+    <Link to="/page2">Page2</Link>
+    <span> == </span>
+    <Link to="/page/123">动态路由</Link>
   </div>
 }
+
 export default function App() {
   return (
-    <BrowserRouter>
-      <NavLink to="/page/123">page</NavLink>
-      <Switch>
-        <Route path="/page" component={Page}></Route>
-        <Route path="/page1" component={Page1} />
-        <Route path="/" component={Nav} />
-      </Switch>
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <Nav />
+
+        {/* <NavLink to="/page/123">page</NavLink> */}
+        <Switch>
+          <Route path="/page1" component={Page1} children={() => <div>children</div>}></Route>
+          <Route path="/page2" component={Page2} />
+          <Route path="/page/:id" component={WrapperA} />
+          <Route component={notFound} />
+        </Switch>
+      </BrowserRouter>
+    </div>
   )
 }
 

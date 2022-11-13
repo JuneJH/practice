@@ -3,23 +3,31 @@ import { matchPath } from '../router/matchRouter';
 import context from './context'
 
 export default class Router extends Component {
-    state={
-        location:this.props.history.location
+    static computeRootMatch(pathname) {
+        return {
+            path: "/",
+            url: "/",
+            params: {},
+            isExact: pathname === "/"
+        }
     }
-    componentDidMount(){
-        this.unListent = this.props.history.listen((location,action)=>{
+    state = {
+        location: this.props.history.location
+    }
+    componentDidMount() {
+        this.unListent = this.props.history.listen((location, action) => {
             this.props.history.action1 = action;
-            this.setState({...location})
+            this.setState({ ...location })
         })
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         this.unListent();
     }
     render() {
-        const ctx ={
-            history:this.props.history,
-            location:this.state.location,
-            match:matchPath("/",this.state.location.pathname)
+        const ctx = {
+            history: this.props.history,
+            location: this.state.location,
+            match: Router.computeRootMatch(this.state.location.pathname)
         }
         return (
             <context.Provider value={ctx}>
